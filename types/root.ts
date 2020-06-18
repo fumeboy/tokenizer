@@ -15,7 +15,7 @@ export let root = <typ>{
                     "```": {
                         match: safe,
                         goto: () => root.pattern,
-                    },
+                    }
                 }
             },
             "</": {

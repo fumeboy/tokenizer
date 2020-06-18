@@ -13,11 +13,11 @@ export function tokenize(token: token) {
     while (true) {
         if (pattern.goto == undefined) {
             if (!pattern.next) return;
-            let next_meet = text.match(new RegExp(Object.keys(pattern.next).join("|")))
+            let next_meet = text.match(pattern.regexp!)
             if (!next_meet) {// 没有遇到期望的 next
                 if (pattern.catch != undefined) {
                     if(pattern.catch == -1){
-                        throw ""
+                        throw pattern
                     }
                     if(pattern.catch == 0){
                         return;
@@ -29,8 +29,10 @@ export function tokenize(token: token) {
                     }
                     token.children.push(child)
                     tokenize(child)
+                    return;
+                }else{
+                    throw pattern
                 }
-                throw ""
             }
             let next_symbol = next_meet[0]
             pattern = pattern.next[next_symbol]
