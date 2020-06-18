@@ -6,7 +6,7 @@
 
 仅依赖一个 typescript 解释器，这里是 deno
 
-命令是 `deno run index.ts`
+命令是 `deno run test.ts`
 
 ## 在该程序里
 

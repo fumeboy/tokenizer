@@ -15,19 +15,22 @@ export function tokenize(token: token) {
             if (!pattern.next) return;
             let next_meet = text.match(new RegExp(Object.keys(pattern.next).join("|")))
             if (!next_meet) {// 没有遇到期望的 next
-                if (pattern.final != undefined) {
-                    if(pattern.final == -1){
+                if (pattern.catch != undefined) {
+                    if(pattern.catch == -1){
                         throw ""
                     }
+                    if(pattern.catch == 0){
+                        return;
+                    }
                     let child = <token>{
-                        type: pattern.final,
+                        type: pattern.catch,
                         inner_text: text.slice(0),
                         children: []
                     }
                     token.children.push(child)
                     tokenize(child)
                 }
-                return
+                throw ""
             }
             let next_symbol = next_meet[0]
             pattern = pattern.next[next_symbol]

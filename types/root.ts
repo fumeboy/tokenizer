@@ -7,7 +7,7 @@ import {close_tag} from "./root.close_tag.ts"
 export let root = <typ>{
     name: "root",
     pattern: {
-        final: txt,
+        catch: txt,
         next: {
             "```": {
                 match: txt,
