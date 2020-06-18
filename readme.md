@@ -2,6 +2,12 @@
 
 简单但原创的分词器
 
+## 运行环境和启动命令
+
+仅依赖一个 typescript 解释器，这里是 deno
+
+命令是 `deno run index.ts`
+
 ## 在该程序里
 
 token 具有嵌套结构，每个 token 可以是 "sub-token" 的集合
